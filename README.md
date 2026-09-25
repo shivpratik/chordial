@@ -1,5 +1,7 @@
 # Chordial
 
+[![CI](https://github.com/shivpratik/chordial/actions/workflows/ci.yml/badge.svg)](https://github.com/shivpratik/chordial/actions/workflows/ci.yml)
+
 *Pick a mood, get a song you can play.*
 
 Chordial is a procedural music generator. Choose a mood (happy, melancholic, tense, calm) and it
@@ -13,7 +15,7 @@ out as a MIDI file. Chord sheets, strumming patterns, guitar tabs, audio and a w
 Requires [uv](https://docs.astral.sh/uv/).
 
 ```bash
-git clone https://github.com/<you>/chordial.git
+git clone https://github.com/shivpratik/chordial.git
 cd chordial
 uv sync
 ```
