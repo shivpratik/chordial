@@ -1,0 +1,75 @@
+# Mood definitions. Add a mood by adding an entry here: no code changes needed.
+#
+# Fields:
+#   description:    one line shown by `chordial moods`
+#   scale:          scale the melody uses (see SCALES in theory.py)
+#   harmony_scale:  7-note scale chords are built from (defaults to `scale`)
+#   keys:           allowed keys. Chosen so every chord in every progression is an open chord
+#                   (plus F); check the chord names when adding keys.
+#   tempo:          [min, max] BPM
+#   progressions:   Roman numeral progressions, one chord per bar, with relative weights
+#   rhythms:        melody rhythm templates for one 4/4 bar, in beats. Each must add up to 4.
+#                   Negative numbers are rests: [2, -2] = a half note then a half rest.
+#   repeat_weight:  how likely the melody is to repeat the same note (default 0.4). Higher sounds
+#                   more insistent and tense.
+
+happy:
+  description: Bright and bouncy, major key
+  scale: major
+  keys: [C, G]                  # C G Am F / G D Em C (D and A major need Bm / F#m barres)
+  tempo: [110, 130]
+  progressions:
+    - {numerals: [I, V, vi, IV], weight: 3}   # the "four chord" pop progression
+    - {numerals: [I, IV, V, IV], weight: 1}
+    - {numerals: [I, vi, IV, V], weight: 1}   # 50s doo-wop progression
+  rhythms:
+    - [1, 0.5, 0.5, 1, 1]
+    - [0.5, 0.5, 1, 0.5, 0.5, 1]
+    - [1, 1, 0.5, 0.5, 1]
+    - [0.5, 0.5, 0.5, 0.5, 1, 1]
+
+melancholic:
+  description: Slow and wistful, natural minor
+  scale: natural_minor
+  keys: [Am, Em]                # Am F C G / Em C G D (Dm would need a Bb barre)
+  tempo: [60, 80]
+  progressions:
+    - {numerals: [i, VI, III, VII], weight: 3}
+    - {numerals: [i, VII, VI, VII], weight: 1}  # "Andalusian" feel, stepping down
+    - {numerals: [i, VI, VII, i], weight: 1}
+  rhythms:
+    - [2, 2]
+    - [4]
+    - [3, 1]
+    - [2, 1, 1]
+
+tense:
+  description: Restless and dramatic, harmonic minor
+  scale: harmonic_minor
+  keys: [Am]                    # Am Dm E F. Em needs B, Dm needs Gm: both barre chords.
+  tempo: [90, 120]
+  progressions:
+    - {numerals: [i, iv, V], weight: 1}
+    - {numerals: [i, iv, i, V], weight: 2}     # ends on V so the loop pulls back to i
+    - {numerals: [i, VI, iv, V], weight: 2}
+  rhythms:
+    - [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+    - [-0.5, 0.5, -0.5, 0.5, 1, 1]
+    - [-0.5, 1, 0.5, -0.5, 1.5]
+    - [1, 0.5, 0.5, 1, 0.5, 0.5]
+  repeat_weight: 1.0
+
+calm:
+  description: Gentle and spacious, major pentatonic
+  scale: major_pentatonic
+  harmony_scale: major          # chords need 7 notes to stack thirds; see docs/decisions.md
+  keys: [C, G, D]
+  tempo: [70, 90]
+  progressions:
+    - {numerals: [I, IV], weight: 3}
+    - {numerals: [I, IV, I, V], weight: 1}
+  rhythms:
+    - [2, -2]
+    - [-1, 1, 2]
+    - [3, -1]
+    - [1, -1, 2]
