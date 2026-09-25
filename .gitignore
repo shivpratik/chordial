@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Generated output (keep curated samples in examples/)
+out/
+*.mid
+*.wav
+!examples/*.mid
+
+# OS / editors
+.DS_Store
+.vscode/
+.idea/
+venv.nosync/

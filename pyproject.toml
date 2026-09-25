@@ -1,0 +1,38 @@
+[project]
+name = "chordial"
+version = "0.1.0"
+description = "Pick a mood, get a song you can play: a procedural music generator with guitar chord sheets and tabs."
+readme = "README.md"
+license = "MIT"
+authors = [
+    { name = "Shivpratik", email = "shivpratik.habib@gmail.com" }
+]
+requires-python = ">=3.10"
+dependencies = [
+    "pretty-midi>=0.2.10",
+    "pyyaml>=6.0",
+]
+
+[project.scripts]
+chordial = "chordial.cli:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+    "ruff>=0.6",
+]
+
+[build-system]
+requires = ["uv_build>=0.12.19,<0.13.0"]
+build-backend = "uv_build"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
